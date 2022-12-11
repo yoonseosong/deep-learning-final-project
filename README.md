@@ -308,11 +308,11 @@ WEIGHT_DECAY = 0.0005
 
 Results:
 
-![Train loss](https://drive.google.com/uc?export=view&id=FILE_ID)
+![Train loss](https://drive.google.com/uc?export=view&id=1f30o3bwaQzpt5KKJaN3elP4G-QxMqhOy)
 
-![Test loss](https://drive.google.com/uc?export=view&id=FILE_ID)
+![Test loss](https://drive.google.com/uc?export=view&id=1pHKQVK-Q2LHsTrpk0abT2nqxcVtuNqPn)
 
-![Test accuracy](https://drive.google.com/uc?export=view&id=FILE_ID)
+![Test accuracy](https://drive.google.com/uc?export=view&id=1vFlEAvjQoCV6ehgH0fNNmln8bc9Ja19z)
 
 The findings suggest that deep learning models can accurately detect brain tumors and can be a valuable tool in clinical practice. However, an accuracy of 97%, although close to 100%, is nowhere near high enough for our model to be employed in a real world setting.
 
