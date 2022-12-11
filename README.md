@@ -19,7 +19,7 @@ For your final project you should explore any topic you are interested in relate
 
 In the health sciences, early and accurate detection of maladies can improve the patients’ quality of life and dramatically affect the survival rate. In the recent decade, machine learning’s applications in the health sciences have provided a more accurate and efficient way of detecting diseases. In this project, we aim to build a convolutional neural network (CNN) to classify brain MRI images into tumor and non-tumor classes. 
 
-The model is trained and tested on two datasets of brain MRI images from Kaggle that we combined. We experimented with various data augmentations, network architectures, and hyperparameters to find the best model. The model achieved an accuracy of 96%, predicting <insert> images out of 606 images. The findings suggest that deep learning models can accurately detect brain tumors and can be a valuable tool in clinical practice.
+The model is trained and tested on two datasets of brain MRI images from Kaggle that we combined. We experimented with various data augmentations, network architectures, and hyperparameters to find the best model. The model achieved an accuracy of 96%, predicting 587 images out of 606 images. The findings suggest that deep learning models can accurately detect brain tumors and can be a valuable tool in clinical practice.
 
 ## Problem statement 
 
