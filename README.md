@@ -50,7 +50,7 @@ We experimented with various data augmentations, network architectures, and hype
 Network architecture:
 ```
 def __init__(self):
-   super(AudreyNet, self).__init__()
+   super(ConvNet, self).__init__()
    self.conv1 = nn.Conv2d(in_channels=3, out_channels=64, kernel_size=3, stride=2, padding=1, bias=False)
    self.conv2 = nn.Conv2d(64, 128, 3, stride=2, padding=1)
    self.conv3 = nn.Conv2d(128, 256, 3, stride=2, padding=1)
@@ -220,6 +220,50 @@ We didn’t want to apply noise since MRI technicians are trained to create good
 We also found that changes to model depth or breadth also weren’t able to increase accuracy past the 97% threshold. After determining on a fairly simple model structure using three convolutional layers, we perform an experiment to find the best set of hyperparameters. 
 
 ### Final model:
+Dataset augmentation: None
+
+Network architecture:
+```
+  def __init__(self):
+    super(ConvNet, self).__init__()
+    self.conv1 = nn.Conv2d(in_channels=3, out_channels=64, kernel_size=3, stride=2, padding=1, bias=False)
+    self.conv2 = nn.Conv2d(64, 128, 3, stride=2, padding=1)
+    self.conv3 = nn.Conv2d(128, 256, 3, stride=2, padding=1)
+    self.maxpool = nn.MaxPool2d(2, 2)
+    self.fc1 = nn.Linear(4096, 2)
+
+    self.best_accuracy = -1
+    
+  def forward(self, x):
+    x = self.conv1(x)
+    x = F.relu(x)
+    x = self.maxpool(x)
+    x = self.conv2(x)
+    x = F.relu(x)
+    x = self.maxpool(x)
+    x = self.conv3(x)
+    x = F.relu(x)
+    x = self.maxpool(x)
+    x = torch.flatten(x, 1)
+    x = self.fc1(x)
+    return x
+```
+
+Training hyperparameters:
+```
+BATCH_SIZE = 256
+TEST_BATCH_SIZE = 10
+EPOCHS = 15
+LEARNING_RATE = 0.005
+MOMENTUM = 0.85
+USE_CUDA = True
+SEED = 0
+PRINT_INTERVAL = 100
+WEIGHT_DECAY = 0.0005
+```
+
+Results:
+
 <insert>
 
 We analyzed accuracy using a binary correct or incorrect count and used a binary cross entropy loss with a sigmoid layer for stability. 
