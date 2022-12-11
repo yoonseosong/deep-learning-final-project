@@ -1,25 +1,20 @@
 # Deep Learning Final Project: Brain Tumor Detection
 
-Group: Angela Xu, Yoonseo Song
-
-For your final project you should explore any topic you are interested in related to deep learning. This could involve training a model for a new task, building a new dataset, improving deep models in some way and testing on standard benchmarks, etc. You project should probably involve some implementation, some data, and some training. The amount of effort and time should be approximately 2 homework assignments.
-
-- website describing your project
-- 2-3 minute video. 
-  - problem setup
-  - data used 
-  - techniques, etc
-  - description of which components were from preexisting work (i.e. code from github) and which components were implemented for the project (i.e. new code, gathered dataset, etc).
+**Group: Angela Xu, Yoonseo Song**
 
 ## Video with Live Demo
 
-<insert>
+[![Final Project Video with Live Demo](https://img.youtube.com/vi/8F-D0TqqVh0/0.jpg)](https://www.youtube.com/watch?v=8F-D0TqqVh0)
+
+https://youtu.be/8F-D0TqqVh0
+
+Live Demo Python Notebook:
+
+https://colab.research.google.com/drive/1zyw99oh8VZUEDMfmwkxB4BW6GZU_zs6T?usp=sharing
 
 ## Abstract
 
-In the health sciences, early and accurate detection of maladies can improve the patients’ quality of life and dramatically affect the survival rate. In the recent decade, machine learning’s applications in the health sciences have provided a more accurate and efficient way of detecting diseases. In this project, we aim to build a convolutional neural network (CNN) to classify brain MRI images into tumor and non-tumor classes. 
-
-The model is trained and tested on two datasets of brain MRI images from Kaggle that we combined. We experimented with various data augmentations, network architectures, and hyperparameters to find the best model. The model achieved an accuracy of 96%, predicting 587 images out of 606 images. The findings suggest that deep learning models can accurately detect brain tumors and can be a valuable tool in clinical practice.
+In this project, we use CNNs to classify MRI scans into tumor and non-tumor classes. The model is trained and tested on two datasets of brain MRI images from Kaggle that we combined. We experimented with various data augmentations, network architectures, and hyperparameters to find the best model. The model achieved an accuracy of 96%, predicting 587 images out of 606 images. The findings suggest that deep learning models can accurately detect brain tumors and can be a valuable tool in clinical practice.
 
 ## Problem statement 
 
@@ -35,16 +30,19 @@ We combined the first dataset with the Brain Tumor classification dataset (https
 
 After combining these two datasets and standardizing the naming conventions of the combined dataset, we first performed preprocessing. Since the image dimensions among each dataset and across the two datasets weren’t the same, we reshape all images to 256x256 bits for training. We then created HDF5 files for each training and testing dataset so it is easier to import the processed data.
 
+### Sample MRI Scans
+
+![MRI Scans](https://drive.google.com/uc?export=view&id=1CAL8QedHIYVIAxYdptkiXGKaUphaTJ5M)
+
 ## Methodology 
 
-We trained convolutional neural networks, using convolutional layers, maxpooling layers, and fully connected layers, to extract features from the MRI scans and classify them.
+After processing our data, we trained multiple networks to extract features from the MRI scans and classify them.
 
 We experimented with various data augmentations, network architectures, and hyperparameters (each experiment explained in the “Experiments” section below). In each of the experiments, we graphed train loss, test loss, and test accuracy across epoch during the train. We also noted the values for final train loss, test loss, and test accuracy at the end of the training.
 
 ## Experiments/evaluation
 
-We experimented with various data augmentations, network architectures, and hyperparameters to find the best model.
-
+We analyzed accuracy using a binary correct or incorrect count and used a binary cross entropy loss with a sigmoid layer for stability. 
 
 ### Experiment 1
 Network architecture:
@@ -91,7 +89,12 @@ Train loss: 0.0463
 Test loss: 0.3301
 Test accuracy: 586/606 (97%)
 ```
-<insert graphs>
+
+![Train loss](https://drive.google.com/uc?export=view&id=1xL3_JqV4oAT4r5SmQciAWOEbXBwzIhsM)
+
+![Test loss](https://drive.google.com/uc?export=view&id=14b93Gx8OlCBQ1pm-xkPFBuuto3JnMx38)
+
+![Test accuracy](https://drive.google.com/uc?export=view&id=1DfSOmUHR-efAu_KYPwVByXJ2F8G0Nuph)
 
 ### Experiment 2: Dataset augmentation on train data
 
@@ -113,6 +116,12 @@ Final test accuracy: 584/606 (96%)
 Final test loss: 19.5082
 ```
 
+![Train loss](https://drive.google.com/uc?export=view&id=1Esb5p80q88JW5KwwWM7p1PoWDSIcKVMO)
+
+![Test loss](https://drive.google.com/uc?export=view&id=1eFP_Mg1dxG0fsrHeD59hxkiCB5U38rYB)
+
+![Test accuracy](https://drive.google.com/uc?export=view&id=180ZWEv_3u0u_kMID7AbKDABev40kBZfB)
+
 2. RandomAutocontrast
 
 Dataset augmentation:
@@ -133,6 +142,12 @@ Final test accuracy: 584/606 (96%)
 Final test loss: 21.3096
 ```
 
+![Train loss](https://drive.google.com/uc?export=view&id=1J5arx-sk8hl1pWJHy9W3koIv2VEgAmhK)
+
+![Test loss](https://drive.google.com/uc?export=view&id=15ZjAqEAL7OUx5EkZEIQ_g_6-__5VyVgL)
+
+![Test accuracy](https://drive.google.com/uc?export=view&id=1VcBSSG5ojuxD7KXegKP47QQBaSLKNYXs)
+
 3. GaussianBlur
 
 Dataset augmentation:
@@ -152,6 +167,12 @@ Final train loss: 0.1429380513727665
 Final test accuracy: 584/606 (96%)
 Final test loss: 0.3242
 ```
+
+![Train loss](https://drive.google.com/uc?export=view&id=1hl5yPBL4YDY4zPYtWUqscNeYDvZdKZNh)
+
+![Test loss](https://drive.google.com/uc?export=view&id=1Dt3jTIBEGcw4qBut1Eyu37sAkImBTjIF)
+
+![Test accuracy](https://drive.google.com/uc?export=view&id=1UUbBHuvNvRb8NcpBOfsjN_NQqbNElnFS)
 
 ### Experiment 3: Network Architecture
 
@@ -175,6 +196,8 @@ def __init__(self):
 ```
 
 Result: Test accuracy: 97%
+
+![Test accuracy](https://drive.google.com/uc?export=view&id=1zH8Vvn_LWM-MicoP47hmzgNC7ckOUFjN)
 
 2. 3 wider convolutional layer
 
@@ -205,19 +228,40 @@ Network architecture:
 
 Result: Test accuracy: 97%
 
+![Test accuracy](https://drive.google.com/uc?export=view&id=19r1LDfSf7BjoJrtqIljAV0933xfFOeyB)
+
 ### Experiment 4: Hyperparameter experimentation
 
 From the default set of hyperparameters (batch size = 256, test batch size = 10, epoch = 10, learning rate = 0.01, momentum = 0.95, seed = 0, weight decay = 0.0005), we played around with the learning rate, momentum, and weight decay, we changed each of them at a time, while keeping other parameters as default. We tried learning rate of 0.01, 0.005, 0.001, momentum of 0.95, 0.90, 0.85, and weight decay of 0.0005, 0.0010, 0.0015, and graphed the train loss, test loss, and test accuracy to find the best value for each parameter.
 
-<insert graphs>
+1. Learning rate = 0.01, 0.005, 0.001
 
+![Train loss](https://drive.google.com/uc?export=view&id=1MTqEL6JMeZAQ-PhHA8EgnxPUkaEfgtbs)
+
+![Test loss](https://drive.google.com/uc?export=view&id=1t9BhEHIyJT20-v6cxmk6E-fLcR5CN47b)
+
+![Test accuracy](https://drive.google.com/uc?export=view&id=1W2CslAiPoQ1aPGinR4KfUVE7W68XRDiA)
+
+2. Momentum = 0.95, 0.90, 0.85
+
+![Train loss](https://drive.google.com/uc?export=view&id=1cbX76kHK4HLJ8R1m-8j0lKq5WUoK6UcX)
+
+![Test loss](https://drive.google.com/uc?export=view&id=1PaYMrw06K7wiQ2cksm-usOvxegA2wgEk)
+
+![Test accuracy](https://drive.google.com/uc?export=view&id=14Rz8Ro-bGZWtckqflptfPa0arj5Lx2Fx)
+
+3. Weight decay = 0.0005, 0.0010, 0.0015
+   
+![Train loss](https://drive.google.com/uc?export=view&id=1uRyKYPBU-uf4DTv2QX4jmcndsODXYV7u)
+
+![Test loss](https://drive.google.com/uc?export=view&id=1x_9EjOruD2XmDuMx5lUjQW47MicayMcW)
+
+![Test accuracy](https://drive.google.com/uc?export=view&id=1wlfjH4MQH0hbugZaRlh558zUauM8AF3R)
 
 ## Results 
-To reach our final model, we experimented with various forms of data augmentation methods, expecting that it would allow the dataset to be trained on a wider breadth of imaging. However, adding data augmentation did not change the accuracy of the model much. One of the contributors to this could be that MRI scans have very little variation and data augmentation wouldn’t increase the variability of the input images by much. 
 
-We didn’t want to apply noise since MRI technicians are trained to create good MRI scans. Thus, we applied transformations such as horizontal and vertical flips which wouldn’t affect black and white MRI scans that much.
+Our best model was able to achieve a final accuracy of 97%. We used the hyperparameters that yielded the best results in our experiment. That is, we used a learning rate of 0.005, momentum of 0.85, weight decay of 0.0005, training batch size of 256, and a testing batch size of 10. We trained for 15 epochs, ending training before our model began overfitting.
 
-We also found that changes to model depth or breadth also weren’t able to increase accuracy past the 97% threshold. After determining on a fairly simple model structure using three convolutional layers, we perform an experiment to find the best set of hyperparameters. 
 
 ### Final model:
 Dataset augmentation: None
@@ -264,21 +308,12 @@ WEIGHT_DECAY = 0.0005
 
 Results:
 
-<insert>
+![Train loss](https://drive.google.com/uc?export=view&id=FILE_ID)
 
-We analyzed accuracy using a binary correct or incorrect count and used a binary cross entropy loss with a sigmoid layer for stability. 
+![Test loss](https://drive.google.com/uc?export=view&id=FILE_ID)
+
+![Test accuracy](https://drive.google.com/uc?export=view&id=FILE_ID)
 
 The findings suggest that deep learning models can accurately detect brain tumors and can be a valuable tool in clinical practice. However, an accuracy of 97%, although close to 100%, is nowhere near high enough for our model to be employed in a real world setting.
 
 Future improvements on the model could include converting MRI images to grayscale or including more patient information inputs to the model such as age and health habits.
-
-
-
-
-
-## Examples 
-- images/text/live demo, anything to show off your work (note, demos get some extra credit in the rubric)
-
-## Video 
-- a 2-3 minute long video where you explain your project and the above information
-
